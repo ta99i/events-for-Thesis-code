@@ -1,0 +1,79 @@
+{
+  "Police": {
+    "RegisterCertificats": [
+      {
+        "From": "Algeria",
+        "certificatId": 123456,
+        "Year of first use": 2017,
+        "vin": "DZ12345",
+        "Model": "Ibiza",
+        "Brand": "Seat",
+        "Type": "car",
+        "Body": "Sedan",
+        "Energy": "Essance",
+        "Power": 7,
+        "Number_of_places": 5,
+        "Payload": "",
+        "Max_Payload": "",
+        "First_Year_of_Using_Vehicle": 2019,
+        "Date_of_Register_Card": 2020,
+        "City": "Alger",
+        "vrp": "12345-123-00",
+        "Owner_First_Name": "AAA",
+        "Owner_Second_Name": "TTT",
+        "Birth_Day": "1999-12-30",
+        "Birth_Place": "Batna",
+        "Address": "Biskra",
+        "PrivateData": "NON",
+        "Status": true
+      }
+    ],
+    "Citizens": [
+      {
+        "ID": "DZ0000",
+        "FirstName": "Abdesselam",
+        "SecondName": "Mohamed Taki Eddine",
+        "Age": 24,
+        "Status": true
+      },
+      {
+        "ID": "DZ0001",
+        "FirstName": "Hariz",
+        "SecondName": "Younes",
+        "Age": 23,
+        "Status": true
+      },
+      {
+        "ID": "DZ0002",
+        "FirstName": "Gasmia",
+        "SecondName": "Ishak",
+        "Age": 27,
+        "Status": false
+      }
+    ]
+  },
+  "GENDARMERIE": {
+    "RegisterCertificats": [],
+    "Citizens": [
+      {
+        "ID": "DZ0003",
+        "FirstName": "Chouimet",
+        "SecondName": "Houssam",
+        "Age": 26,
+        "Status": false
+      }
+    ]
+  },
+  "TAX": {
+    "RegisterCertificats": [],
+    "Citizens": [
+      {
+        "ID": "DZ0002",
+        "FirstName": "Gasmia",
+        "SecondName": "Ishak",
+        "Age": 26,
+        "Status": false
+      }
+    ]
+  }
+}
