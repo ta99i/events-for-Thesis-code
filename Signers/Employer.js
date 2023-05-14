@@ -1,13 +1,13 @@
 const ethers = require("ethers");
-const ABI = require("./abi.json");
+const ABI = require("../ABIS/abi.json");
 require("dotenv").config();
-const { HashAcceptedMessage, HashDeclinedMessage } = require("./Hashing");
-const { SearchOnRC, SearchOnCitizens } = require("./AccessControlLayer");
+const { HashAcceptedMessage, HashDeclinedMessage } = require("../Security/Hashing");
+const { SearchOnRC, SearchOnCitizens } = require("../DAL/AccessControlLayer");
 
-const contractAddress = "0x4a8a038ef0c272b7e7e697a95ee7d8cbcd1b11f5";
-const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:7545");
+const contractAddress = "0x87722FdCC80967295334993B90426C2504C56441";
+const provider = new ethers.providers.JsonRpcProvider("http://172.25.240.1:7545");
 const contract = new ethers.Contract(contractAddress, ABI.abi, provider);
-const PK = "0x9afe727521d7d2e16b1d7af8733913783465d1efef23fe1e66f0f5961412a2d9";
+const PK = "0x4e70fd689b1481d4b332602f5c73916ce3a84f49e9bc7e266f2837a42ceeb952";
 const Wallet = new ethers.Wallet(PK, provider);
 const SignMessage = async (hash) => {
   const signMessage = await Wallet.signMessage(ethers.utils.arrayify(hash));

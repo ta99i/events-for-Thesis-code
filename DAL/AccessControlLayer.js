@@ -6,6 +6,7 @@ async function SearchOnRC(vin, vrp) {
   const database = client.db("Police");
 
   try {
+    console.log("f")
     const RegisterCertificats = database.collection("RegisterCertificats");
     if (vin === "") {
       vin = "-1";
@@ -34,8 +35,6 @@ async function SearchOnCitizens(Owner) {
   } catch (err) {
     //console.log(err);
   }
-
-  return CitizensValidition;
 }
 
 module.exports = { SearchOnRC, SearchOnCitizens };
