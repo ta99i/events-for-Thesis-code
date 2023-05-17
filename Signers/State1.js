@@ -11,7 +11,7 @@ const contractAddress = "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512";
 const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
 
 const contract = new ethers.Contract(contractAddress, ABI.abi, provider);
-const PK = "0x4bbbf85ce3377467afe5d46f804f221813b2bb87f24d81f60f1fcdbf7cbf4356";
+const PK = "0x4e70fd689b1481d4b332602f5c73916ce3a84f49e9bc7e266f2837a42ceeb952";
 const Wallet = new ethers.Wallet(PK, provider);
 const SignMessage = async (hash) => {
   const signMessage = await Wallet.signMessage(ethers.utils.arrayify(hash));
@@ -61,18 +61,28 @@ async function getTransfer() {
     console.log(transfer[0] && transfer[1] && transfer[2]);
     const hash =
       transfer[0] && transfer[1] && transfer[2]
-        ? HashAcceptedMessage(id, vin, vrp, uri, oldOwner, newOwner)
+        ? HashAcceptedMessage(
+            id,
+            vin,
+            vrp,
+            uri,
+            oldOwner,
+            newOwner,
+            oldState,
+            newState
+          )
         : HashDeclinedMessage(id);
     //Sign hash
     const signed_Meesage = await SignMessage(hash);
     console.log(await SignMessage(hash));
-    await contract.connect(Wallet).Siging(
-      id,
-
-      4,
-      ethers.utils.formatBytes32String("TAX"),
-      signed_Meesage
-    );
+    await contract
+      .connect(Wallet)
+      .Siging(
+        id,
+        1,
+        ethers.utils.formatBytes32String("GOVERNMENT"),
+        signed_Meesage
+      );
     const rc = await contract.getTemporaryRegisterCertificates(id);
     console.log(rc);
   });

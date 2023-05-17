@@ -6,7 +6,7 @@ const HashAcceptedMessage = (id, vin, vrp, uri, oldOwner, newOwner) => {
     [id, vin, vrp, uri, oldOwner, newOwner]
   );
   const hash = ethers.utils.keccak256(encodePackedpacked);
-  console.log("message for rc : ", id, "hashed with Accepted");
+  console.log("message for rc : ", id, "hashed with Accepted", hash);
   return hash;
 };
 const HashDeclinedMessage = (id) => {
@@ -15,7 +15,7 @@ const HashDeclinedMessage = (id) => {
     [id, "Declined"]
   );
   const hash = ethers.utils.keccak256(encodePackedpacked);
-  console.log("message for rc : ", id, "hashed with Declined");
+  console.log("message for rc : ", id, "hashed with Declined", hash);
 
   return hash;
 };

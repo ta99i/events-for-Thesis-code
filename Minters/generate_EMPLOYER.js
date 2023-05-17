@@ -1,9 +1,9 @@
 const ethers = require("ethers");
-const ABI = require("./ABIS/abi.json");
-const contractAddress = "0x87722FdCC80967295334993B90426C2504C56441";
-const provider = new ethers.providers.JsonRpcProvider("http://172.25.240.1:7545");
+const ABI = require("../ABIS/abi.json");
+const contractAddress = "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512";
+const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/");
 const contract = new ethers.Contract(contractAddress, ABI.abi, provider);
-const PK = "0x4e70fd689b1481d4b332602f5c73916ce3a84f49e9bc7e266f2837a42ceeb952";
+const PK = "0x7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6";
 const Wallet = new ethers.Wallet(PK, provider);
 
 function generateRandomString(length) {
@@ -25,9 +25,10 @@ async function generate() {
   const uri = generateRandomString(10);
   const owner = generateRandomString(10);
   //const owner = "DZ12345";
+  const state = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
   const mint = await contract
     .connect(Wallet)
-    .mintRegisterCertificate(vin, vrp, uri, owner);
+    .mintRegisterCertificate(state, vin, vrp, uri, owner);
   console.log(mint);
 }
 generate();
