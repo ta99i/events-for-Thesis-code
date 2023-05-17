@@ -34,51 +34,17 @@ async function getTransfer() {
     if (newState == address) {
       console.log("Register Certificate : ", id);
       //compare with database
-      let transfer = [];
-      await SearchOnCitizens(oldOwner)
-        .then((res) => {
-          if (res.length == 0 || res[0].canTransfer) transfer.push(true);
-          else transfer.push(false);
-        })
-        .then(async () => {
-          return await SearchOnCitizens(newOwner);
-        })
-        .then((res) => {
-          if (res.length == 0 || res[0].canTransfer) transfer.push(true);
-          else transfer.push(false);
-        })
-        .then(async () => {
-          return await SearchOnRC(vin, vrp);
-        })
-        .then((res) => {
-          if (res.length == 2) {
-            console.log(
-              "Please verifi request for register card number : ",
-              id
-            );
-            transfer.push(false);
-          } else if (res.length == 0 || res[0].Status == true) {
-            transfer.push(true);
-          } else {
-            transfer.push(false);
-          }
-        });
-      console.log(transfer);
-      //hash resultat
-      console.log(transfer[0] && transfer[1] && transfer[2]);
-      const hash =
-        transfer[0] && transfer[1] && transfer[2]
-          ? HashAcceptedMessage(
-              id,
-              vin,
-              vrp,
-              uri,
-              oldOwner,
-              newOwner,
-              oldState,
-              newState
-            )
-          : HashDeclinedMessage(id);
+
+      const hash = HashAcceptedMessage(
+        id,
+        vin,
+        vrp,
+        uri,
+        oldOwner,
+        newOwner,
+        oldState,
+        newState
+      );
       //Sign hash
       const signed_Meesage = await SignMessage(hash);
       console.log(await SignMessage(hash));
