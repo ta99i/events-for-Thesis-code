@@ -25,8 +25,8 @@ async function getTransfer() {
     const uri = trc[4];
     const oldOwner = trc[5];
     const newOwner = trc[6];
-    const oldState = trc[6];
-    const newState = trc[7];
+    const oldState = trc[7];
+    const newState = trc[8];
     //const newOwner = "DZ12345";
     console.log("Register Certificate : ", id);
     //compare with database
@@ -61,7 +61,16 @@ async function getTransfer() {
     console.log(transfer[0] && transfer[1] && transfer[2]);
     const hash =
       transfer[0] && transfer[1] && transfer[2]
-        ? HashAcceptedMessage(id, vin, vrp, uri, oldOwner, newOwner)
+        ? HashAcceptedMessage(
+            id,
+            vin,
+            vrp,
+            uri,
+            oldOwner,
+            newOwner,
+            oldState,
+            newState
+          )
         : HashDeclinedMessage(id);
     //Sign hash
     const signed_Meesage = await SignMessage(hash);
