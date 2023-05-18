@@ -1,6 +1,7 @@
 # change initdb.js by this and install the packages
-#1 cors
-#2body-parser
+#1 cors.
+#2body-parser.
+```
 const express= require('express')
 const cors = require("cors");
 const bodyParser = require('body-parser');
@@ -63,4 +64,5 @@ app.post('/tax',async (req,res)=>{
   const Reg = database.collection('Citizens').insertOne(req.body);
   
 })
-#and run npm node initdb.js to insert documents to database
+```
+## and run npm node initdb.js to insert documents to database.
